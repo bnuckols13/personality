@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Personality: Three Frameworks for Growth</title>
+    <style>
+        /* CSS Custom Properties for Therapeutic Design */
+        :root {
+            --primary-sage: #8FBC8F;
+            --primary-sage-light: #A4D3A4;
+            --secondary-lavender: #E6E6FA;
+            --accent-soft-blue: #B0C4DE;
+            --text-charcoal: #2F2F2F;
+            --text-muted: #5A5A5A;
+            --background-cream: #FEFEFE;
+            --surface-white: #FFFFFF;
+            --border-light: #E0E0E0;
+            --success-green: #90EE90;
+            --warning-amber: #FFE4B5;
+            --error-rose: #FFB6C1;
+            --shadow-soft: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-medium: 0 4px 16px rgba(0,0,0,0.12);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 8px;
+            --border-radius-large: 16px;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--background-cream) 0%, var(--secondary-lavender) 100%);
+            color: var(--text-charcoal);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-charcoal);
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+        h4 { font-size: 1.25rem; }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Container and Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+            background: var(--surface-white);
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 2rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            background: var(--surface-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem 1.5rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-tab:hover {
+            background: var(--secondary-lavender);
+            color: var(--text-charcoal);
+        }
+
+        .nav-tab.active {
+            color: var(--primary-sage);
+            border-bottom-color: var(--primary-sage);
+            background: var(--secondary-lavender);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            background: var(--surface-white);
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--shadow-medium);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Framework Cards */
+        .frameworks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .framework-card {
+            background: var(--surface-white);
+            border: 2px solid var(--border-light);
+            border-radius: var(--border-radius-large);
+            padding: 2rem;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .framework-card:hover {
+            border-color: var(--primary-sage);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .framework-card.selected {
+            border-color: var(--primary-sage);
+            background: var(--secondary-lavender);
+        }
+
+        .framework-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .psychodynamic { background: var(--primary-sage); }
+        .categorical { background: var(--accent-soft-blue); }
+        .jungian { background: #DDA0DD; }
+        .ptm { background: #FF8C69; }
+
+        /* Interactive Elements */
+        .assessment-container {
+            background: var(--secondary-lavender);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .question {
+            margin-bottom: 2rem;
+        }
+
+        .question-text {
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .options {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .option {
+            padding: 1rem;
+            background: var(--surface-white);
+            border: 2px solid var(--border-light);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .option:hover {
+            border-color: var(--primary-sage);
+        }
+
+        .option.selected {
+            border-color: var(--primary-sage);
+            background: var(--primary-sage-light);
+        }
+
+        /* Progress Tracking */
+        .progress-container {
+            background: var(--border-light);
+            border-radius: 20px;
+            height: 8px;
+            margin: 2rem 0;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-sage), var(--accent-soft-blue));
+            height: 100%;
+            border-radius: 20px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            min-width: 120px;
+            margin: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-sage);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #7AA07A;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--accent-soft-blue);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #9BB4D1;
+            transform: translateY(-2px);
+        }
+
+        /* Collapsible Content */
+        .collapsible {
+            background: var(--secondary-lavender);
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+        }
+
+        .collapsible-header {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .collapsible-content {
+            display: none;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .collapsible.active .collapsible-content {
+            display: block;
+        }
+
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .collapsible.active .chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Crisis Support */
+        .crisis-support {
+            background: var(--error-rose);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid #FF69B4;
+        }
+
+        .crisis-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #8B0000;
+        }
+
+        /* Reflection Journal */
+        .reflection-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid var(--border-light);
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            transition: var(--transition-smooth);
+        }
+
+        .reflection-textarea:focus {
+            outline: none;
+            border-color: var(--primary-sage);
+            box-shadow: 0 0 0 3px rgba(143, 188, 143, 0.1);
+        }
+
+        /* Results Display */
+        .results-container {
+            background: var(--success-green);
+            border-radius: var(--border-radius-large);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .framework-match {
+            background: var(--surface-white);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-sage);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            .frameworks-grid { grid-template-columns: 1fr; }
+            .nav-tabs { flex-direction: column; }
+            .nav-tab { min-width: auto; }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus indicators */
+        *:focus {
+            outline: 2px solid var(--primary-sage);
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --text-charcoal: #000000;
+                --border-light: #666666;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Understanding Personality: Three Frameworks for Growth</h1>
+            <p class="subtitle">An evidence-based psychoeducational tool for exploring personality psychology frameworks</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="overallProgress"></div>
+            </div>
+            <div class="progress-text" id="progressText">Welcome! Let's begin your journey of self-discovery.</div>
+        </header>
+
+        <!-- Crisis Support Banner -->
+        <div class="crisis-support">
+            <div class="crisis-title">🆘 Crisis Support Available 24/7</div>
+            <p><strong>National Suicide Prevention Lifeline:</strong> 988 | <strong>Crisis Text Line:</strong> Text HOME to 741741</p>
+            <p>If you're experiencing a mental health emergency, please contact emergency services immediately.</p>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs" role="tablist">
+            <button class="nav-tab active" data-tab="overview" role="tab" aria-selected="true">Overview</button>
+            <button class="nav-tab" data-tab="frameworks" role="tab" aria-selected="false">Four Frameworks</button>
+            <button class="nav-tab" data-tab="assessment" role="tab" aria-selected="false">Self-Assessment</button>
+            <button class="nav-tab" data-tab="reflection" role="tab" aria-selected="false">Reflection</button>
+            <button class="nav-tab" data-tab="resources" role="tab" aria-selected="false">Resources</button>
+        </nav>
+
+        <!-- Content Sections -->
+        
+        <!-- Overview Section -->
+        <section class="content-section active" id="overview" role="tabpanel">
+            <h2>Welcome to Your Personality Exploration Journey</h2>
+            
+            <p>This tool is designed to help you understand four major approaches to personality psychology and psychological understanding. Each framework offers unique insights into human personality, behavior patterns, and psychological experiences.</p>
+
+            <div class="collapsible">
+                <div class="collapsible-header">
+                    <span>🧠 What You'll Learn</span>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="collapsible-content">
+                    <ul>
+                        <li><strong>Psychodynamic Theory:</strong> How unconscious patterns and early experiences shape personality</li>
+                        <li><strong>Categorical/Dimensional Models:</strong> Scientific classification of personality traits and patterns</li>
+                        <li><strong>Jungian Cognitive-Archetypal Framework:</strong> Understanding cognitive preferences and archetypal development</li>
+                        <li><strong>Power Threat Meaning (PTM):</strong> How social context, trauma, and meaning-making shape psychological experiences</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <div class="collapsible-header">
+                    <span>📊 Evidence-Based Benefits</span>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="collapsible-content">
+                    <p>Research shows that psychoeducation about personality can:</p>
+                    <ul>
+                        <li>Reduce symptoms by 50-60% when combined with therapy</li>
+                        <li>Improve self-understanding and emotional regulation</li>
+                        <li>Enhance therapeutic outcomes and treatment engagement</li>
+                        <li>Decrease stigma and increase hope for change</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <div class="collapsible-header">
+                    <span>🎯 How to Use This Tool</span>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="collapsible-content">
+                    <ol>
+                        <li><strong>Explore:</strong> Learn about each framework in the "Three Frameworks" section</li>
+                        <li><strong>Assess:</strong> Complete the self-assessment to identify patterns</li>
+                        <li><strong>Reflect:</strong> Journal about your insights and experiences</li>
+                        <li><strong>Integrate:</strong> Use the resources to deepen your understanding</li>
+                    </ol>
+                    <p><em>Remember: This tool is educational and not a substitute for professional mental health treatment.</em></p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <button class="btn btn-primary" onclick="nextTab('frameworks')">Begin Exploration →</button>
+            </div>
+        </section>
+
+        <!-- Frameworks Section -->
+        <section class="content-section" id="frameworks" role="tabpanel">
+            <h2>Four Major Personality & Psychological Frameworks</h2>
+            
+            <div class="frameworks-grid">
+                <div class="framework-card" data-framework="psychodynamic">
+                    <div class="framework-icon psychodynamic">🧠</div>
+                    <h3>Psychodynamic Theory</h3>
+                    <p><strong>Focus:</strong> Unconscious processes, defense mechanisms, and early life experiences</p>
+                    <p><strong>Key Theorists:</strong> McWilliams, Kernberg, Shedler</p>
+                    <p><strong>Evidence Base:</strong> Strongest research validation with effect sizes of 0.97-1.51</p>
+                </div>
+
+                <div class="framework-card" data-framework="categorical">
+                    <div class="framework-icon categorical">📊</div>
+                    <h3>Categorical/Dimensional Models</h3>
+                    <p><strong>Focus:</strong> Measurable personality traits and dimensional assessment</p>
+                    <p><strong>Systems:</strong> DSM-5 Alternative Model, ICD-11, Five-Factor Model</p>
+                    <p><strong>Evidence Base:</strong> Excellent reliability (0.7-0.85) and predictive validity</p>
+                </div>
+
+                <div class="framework-card" data-framework="jungian">
+                    <div class="framework-icon jungian">🌟</div>
+                    <h3>Jungian Cognitive-Archetypal</h3>
+                    <p><strong>Focus:</strong> Cognitive functions, archetypal patterns, and psychological development</p>
+                    <p><strong>Model:</strong> Beebe's 8-fold framework</p>
+                    <p><strong>Evidence Base:</strong> Large effect sizes (d > 0.8) in naturalistic studies</p>
+                </div>
+
+                <div class="framework-card" data-framework="ptm">
+                    <div class="framework-icon ptm">⚡</div>
+                    <h3>Power Threat Meaning (PTM)</h3>
+                    <p><strong>Focus:</strong> Social context, trauma responses, and personal meaning-making</p>
+                    <p><strong>Key Questions:</strong> What happened? How did it affect you? What sense did you make of it?</p>
+                    <p><strong>Evidence Base:</strong> Emerging framework with strong theoretical foundation and clinical adoption</p>
+                </div>
+            </div>
+
+            <!-- Detailed Framework Information -->
+            <div id="framework-details">
+                <div class="collapsible">
+                    <div class="collapsible-header">
+                        <span>🧠 Psychodynamic Theory Deep Dive</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                    <div class="collapsible-content">
+                        <h4>Core Concepts:</h4>
+                        <ul>
+                            <li><strong>Personality Organization Levels:</strong> Neurotic, borderline, and psychotic levels of functioning</li>
+                            <li><strong>Defense Mechanisms:</strong> Unconscious strategies for managing difficult emotions</li>
+                            <li><strong>Object Relations:</strong> How early relationships shape internal working models</li>
+                            <li><strong>Transference:</strong> How past relationship patterns emerge in current interactions</li>
+                        </ul>
+                        
+                        <h4>Clinical Applications:</h4>
+                        <p>Psychodynamic approaches focus on insight development, working through past traumas, and understanding how unconscious patterns influence current behavior. This framework is particularly helpful for understanding relationship patterns and emotional difficulties.</p>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    <div class="collapsible-header">
+                        <span>📊 Categorical/Dimensional Models Deep Dive</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                    <div class="collapsible-content">
+                        <h4>Five Major Trait Domains:</h4>
+                        <ul>
+                            <li><strong>Negative Affectivity:</strong> Tendency toward emotional instability and distress</li>
+                            <li><strong>Detachment:</strong> Withdrawal from social and emotional experiences</li>
+                            <li><strong>Antagonism:</strong> Behaviors that put oneself against others</li>
+                            <li><strong>Disinhibition:</strong> Impulsive behaviors and disregard for consequences</li>
+                            <li><strong>Psychoticism:</strong> Unusual beliefs, perceptions, or behaviors</li>
+                        </ul>
+                        
+                        <h4>Clinical Applications:</h4>
+                        <p>This approach provides precise measurement of personality traits and helps identify specific areas for intervention. It's particularly useful for treatment planning and monitoring progress over time.</p>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    <div class="collapsible-header">
+                        <span>🌟 Jungian Cognitive-Archetypal Deep Dive</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                    <div class="collapsible-content">
+                        <h4>Eight Function Stack Positions:</h4>
+                        <ul>
+                            <li><strong>Hero (Dominant):</strong> Your most developed and trusted function</li>
+                            <li><strong>Good Parent (Auxiliary):</strong> Supporting function that balances the Hero</li>
+                            <li><strong>Eternal Child (Tertiary):</strong> Playful but potentially immature function</li>
+                            <li><strong>Inferior (Aspirational):</strong> Least developed conscious function</li>
+                            <li><strong>Shadow Functions:</strong> Opposing, Critical Parent, Trickster, and Demon</li>
+                        </ul>
+                        
+                        <h4>Clinical Applications:</h4>
+                        <p>This framework helps understand cognitive preferences, developmental challenges, and integration of shadow aspects. It's particularly valuable for personal growth and understanding psychological development patterns.</p>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    <div class="collapsible-header">
+                        <span>⚡ Power Threat Meaning (PTM) Deep Dive</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                    <div class="collapsible-content">
+                        <h4>The Three Core Questions:</h4>
+                        <ul>
+                            <li><strong>Power - "What has happened to you?":</strong> Explores social, relational, and material circumstances including trauma, discrimination, poverty, and life events</li>
+                            <li><strong>Threat - "How did it affect you?":</strong> Examines biological, psychological, and social threat responses and survival strategies</li>
+                            <li><strong>Meaning - "What sense did you make of it?":</strong> Investigates personal narratives, beliefs, and meaning-making processes</li>
+                        </ul>
+                        
+                        <h4>Key Principles:</h4>
+                        <ul>
+                            <li><strong>Contextual Understanding:</strong> Recognizes the impact of social, cultural, and economic factors</li>
+                            <li><strong>Trauma-Informed:</strong> Views symptoms as understandable responses to difficult circumstances</li>
+                            <li><strong>Strengths-Based:</strong> Emphasizes resilience, survival skills, and adaptive responses</li>
+                            <li><strong>Collaborative:</strong> Centers the person's own understanding and narrative</li>
+                        </ul>
+                        
+                        <h4>Clinical Applications:</h4>
+                        <p>PTM offers an alternative to diagnostic labeling by focusing on understanding experiences within their social context. It's particularly valuable for working with trauma, marginalized populations, and complex presentations that don't fit traditional categories. This approach emphasizes empowerment and social justice alongside individual healing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <button class="btn btn-secondary" onclick="nextTab('assessment')">Take Self-Assessment →</button>
+            </div>
+        </section>
+
+        <!-- Assessment Section -->
+        <section class="content-section" id="assessment" role="tabpanel">
+            <h2>Self-Assessment: Discover Your Framework Preferences</h2>
+            
+            <p>This assessment will help you understand which personality framework might resonate most with your experience and provide valuable insights for your personal growth journey.</p>
+
+            <div class="assessment-container">
+                <div class="question" data-question="1">
+                    <div class="question-text">1. When trying to understand your behavior patterns, you tend to focus on:</div>
+                    <div class="options">
+                        <div class="option" data-value="psychodynamic">
+                            How past experiences and unconscious patterns influence my current reactions
+                        </div>
+                        <div class="option" data-value="categorical">
+                            Identifying specific traits and measuring their intensity in different situations
+                        </div>
+                        <div class="option" data-value="jungian">
+                            Understanding my natural cognitive preferences and developmental journey
+                        </div>
+                        <div class="option" data-value="ptm">
+                            How social circumstances and power dynamics have shaped my experiences
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" data-question="2">
+                    <div class="question-text">2. When facing emotional difficulties, you find it most helpful to:</div>
+                    <div class="options">
+                        <div class="option" data-value="psychodynamic">
+                            Explore the deeper meaning and origin of these feelings
+                        </div>
+                        <div class="option" data-value="categorical">
+                            Use specific coping strategies based on evidence-based techniques
+                        </div>
+                        <div class="option" data-value="jungian">
+                            Consider how this fits into your overall psychological development
+                        </div>
+                        <div class="option" data-value="ptm">
+                            Understand how your environment and experiences created these responses
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" data-question="3">
+                    <div class="question-text">3. Your approach to personal growth typically involves:</div>
+                    <div class="options">
+                        <div class="option" data-value="psychodynamic">
+                            Gaining insight into unconscious patterns and working through past issues
+                        </div>
+                        <div class="option" data-value="categorical">
+                            Identifying specific areas for improvement and tracking measurable progress
+                        </div>
+                        <div class="option" data-value="jungian">
+                            Integrating different aspects of personality and embracing psychological complexity
+                        </div>
+                        <div class="option" data-value="ptm">
+                            Understanding your strengths and resilience within your life context
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" data-question="4">
+                    <div class="question-text">4. When conflicts arise in relationships, you tend to:</div>
+                    <div class="options">
+                        <div class="option" data-value="psychodynamic">
+                            Look for patterns from past relationships and underlying dynamics
+                        </div>
+                        <div class="option" data-value="categorical">
+                            Focus on specific behaviors and communication patterns that can be changed
+                        </div>
+                        <div class="option" data-value="jungian">
+                            Consider how different personality types might be interacting
+                        </div>
+                        <div class="option" data-value="ptm">
+                            Examine power dynamics and how social factors influence the interaction
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" data-question="5">
+                    <div class="question-text">5. Your preferred way of making sense of psychological concepts is:</div>
+                    <div class="options">
+                        <div class="option" data-value="psychodynamic">
+                            Through narrative and understanding the story behind behaviors
+                        </div>
+                        <div class="option" data-value="categorical">
+                            Through scientific measurement and empirical validation
+                        </div>
+                        <div class="option" data-value="jungian">
+                            Through symbolic understanding and archetypal patterns
+                        </div>
+                        <div class="option" data-value="ptm">
+                            Through understanding social context and systemic influences
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" data-question="6">
+                    <div class="question-text">6. When you experience distress, you most want to understand:</div>
+                    <div class="options">
+                        <div class="option" data-value="psychodynamic">
+                            What unconscious conflicts or past traumas might be involved
+                        </div>
+                        <div class="option" data-value="categorical">
+                            What specific symptoms you're experiencing and how to treat them
+                        </div>
+                        <div class="option" data-value="jungian">
+                            What this experience means for your personal development journey
+                        </div>
+                        <div class="option" data-value="ptm">
+                            How your circumstances and environment contributed to these feelings
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <button class="btn btn-primary" id="calculateResults" onclick="calculateAssessmentResults()">View My Results</button>
+            </div>
+
+            <div id="results" class="results-container" style="display: none;">
+                <h3>Your Framework Assessment Results</h3>
+                <div id="resultsContent"></div>
+                <p style="margin-top: 1rem;"><em>Remember: These results are for educational purposes and reflect preferences, not limitations. All frameworks offer valuable perspectives for understanding personality and psychological experience.</em></p>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <button class="btn btn-secondary" onclick="nextTab('reflection')">Continue to Reflection →</button>
+            </div>
+        </section>
+
+        <!-- Reflection Section -->
+        <section class="content-section" id="reflection" role="tabpanel">
+            <h2>Personal Reflection Journal</h2>
+            
+            <p>Use this space to reflect on your learning and insights. Research shows that written reflection enhances understanding and promotes lasting change.</p>
+
+            <div class="reflection-section">
+                <h3>Guided Reflection Prompts</h3>
+                
+                <div class="collapsible">
+                    <div class="collapsible-header">
+                        <span>💭 Framework Insights</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                    <div class="collapsible-content">
+                        <label for="frameworkReflection">Which framework resonated most with you and why?</label>
+                        <textarea class="reflection-textarea" id="frameworkReflection" placeholder="Consider what aspects of the framework felt most relevant to your experience..."></textarea>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    <div class="collapsible-header">
+                        <span>🔍 Pattern Recognition</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                    <div class="collapsible-content">
+                        <label for="patternsReflection">What patterns in your personality or behavior did you recognize?</label>
+                        <textarea class="reflection-textarea" id="patternsReflection" placeholder="Think about recurring themes in your relationships, reactions, or coping strategies..."></textarea>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    <div class="collapsible-header">
+                        <span>🌱 Growth Opportunities</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                    <div class="collapsible-content">
+                        <label for="growthReflection">What areas for growth or development did you identify?</label>
+                        <textarea class="reflection-textarea" id="growthReflection" placeholder="Consider aspects of personality you'd like to develop or understand better..."></textarea>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    <div class="collapsible-header">
+                        <span>🎯 Action Steps</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                    <div class="collapsible-content">
+                        <label for="actionReflection">What specific steps might you take to apply these insights?</label>
+                        <textarea class="reflection-textarea" id="actionReflection" placeholder="Think about concrete ways to use this understanding in your daily life..."></textarea>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-primary" onclick="saveReflections()">Save My Reflections</button>
+                    <button class="btn btn-secondary" onclick="exportReflections()">Export as Text</button>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <button class="btn btn-secondary" onclick="nextTab('resources')">Explore Resources →</button>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="content-section" id="resources" role="tabpanel">
+            <h2>Additional Resources for Continued Learning</h2>
+
+            <div class="collapsible">
+                <div class="collapsible-header">
+                    <span>📚 Recommended Reading</span>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="collapsible-content">
+                    <h4>Psychodynamic Approaches:</h4>
+                    <ul>
+                        <li>"Psychoanalytic Diagnosis" by Nancy McWilliams</li>
+                        <li>"Severe Personality Disorders" by Otto Kernberg</li>
+                        <li>"The Efficacy of Psychodynamic Psychotherapy" by Jonathan Shedler</li>
+                    </ul>
+                    
+                    <h4>Categorical/Dimensional Models:</h4>
+                    <ul>
+                        <li>"Personality Disorders and the Five-Factor Model" by Widiger & Costa</li>
+                        <li>"DSM-5 Alternative Model for Personality Disorders" clinical guidelines</li>
+                        <li>"ICD-11 Personality Disorders" classification materials</li>
+                    </ul>
+                    
+                    <h4>Jungian Approaches:</h4>
+                    <ul>
+                        <li>"Energies and Patterns in Psychological Type" by John Beebe</li>
+                        <li>"Psychological Types" by Carl Jung</li>
+                        <li>"The Red Book" by Carl Jung (for symbolic exploration)</li>
+                    </ul>
+                    
+                    <h4>Power Threat Meaning (PTM):</h4>
+                    <ul>
+                        <li>"The Power Threat Meaning Framework" by Johnstone & Boyle (British Psychological Society)</li>
+                        <li>"Trauma-Informed Healthcare: Approaches and Applications" by Gerber</li>
+                        <li>"The Body Keeps the Score" by Bessel van der Kolk (trauma context)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <div class="collapsible-header">
+                    <span>🔬 Research Evidence</span>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="collapsible-content">
+                    <h4>Key Research Findings:</h4>
+                    <ul>
+                        <li>Psychoeducation reduces symptoms by 50-60% when combined with therapy</li>
+                        <li>Psychodynamic therapy shows effect sizes of 0.97-1.51 for personality change</li>
+                        <li>Dimensional models have reliability coefficients of 0.7-0.85</li>
+                        <li>Jungian approaches show large effect sizes (d > 0.8) in naturalistic studies</li>
+                    </ul>
+                    
+                    <h4>Meta-Analyses and Reviews:</h4>
+                    <p>Multiple systematic reviews support the effectiveness of personality-informed interventions across different theoretical frameworks.</p>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <div class="collapsible-header">
+                    <span>🧠 Professional Development</span>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="collapsible-content">
+                    <h4>Finding Qualified Professionals:</h4>
+                    <ul>
+                        <li><strong>Psychodynamic:</strong> Look for therapists trained in psychodynamic psychotherapy</li>
+                        <li><strong>Trait-Based:</strong> Seek professionals using evidence-based personality assessments</li>
+                        <li><strong>Jungian:</strong> Find analysts trained in Jungian or analytical psychology</li>
+                        <li><strong>PTM-Informed:</strong> Look for trauma-informed, social justice-oriented practitioners</li>
+                    </ul>
+                    
+                    <h4>Professional Organizations:</h4>
+                    <ul>
+                        <li>American Psychological Association (APA)</li>
+                        <li>International Association for Analytical Psychology (IAAP)</li>
+                        <li>Society for Personality Assessment (SPA)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <div class="collapsible-header">
+                    <span>🆘 Crisis and Support Resources</span>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="collapsible-content">
+                    <h4>24/7 Crisis Support:</h4>
+                    <ul>
+                        <li><strong>National Suicide Prevention Lifeline:</strong> 988</li>
+                        <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
+                        <li><strong>SAMHSA National Helpline:</strong> 1-800-662-4357</li>
+                    </ul>
+                    
+                    <h4>Online Support:</h4>
+                    <ul>
+                        <li>NAMI (National Alliance on Mental Illness): nami.org</li>
+                        <li>Psychology Today therapist directory</li>
+                        <li>Mental Health America: mha.org</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <button class="btn btn-primary" onclick="resetTool()">Start Over</button>
+                <button class="btn btn-secondary" onclick="downloadSummary()">Download Summary</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Application State
+        let assessmentAnswers = {};
+        let currentProgress = 0;
+        let reflectionData = {};
+
+        // Tab Navigation
+        function initializeTabs() {
+            const tabs = document.querySelectorAll('.nav-tab');
+            const sections = document.querySelectorAll('.content-section');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetTab = tab.dataset.tab;
+                    switchTab(targetTab);
+                });
+            });
+        }
+
+        function switchTab(tabName) {
+            // Update tab states
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.setAttribute('aria-selected', 'false');
+            });
+            
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            document.querySelector(`[data-tab="${tabName}"]`).setAttribute('aria-selected', 'true');
+
+            // Update content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+
+            // Update progress
+            updateProgress(tabName);
+        }
+
+        function nextTab(tabName) {
+            switchTab(tabName);
+        }
+
+        // Progress Tracking
+        function updateProgress(currentTab) {
+            const tabs = ['overview', 'frameworks', 'assessment', 'reflection', 'resources'];
+            const currentIndex = tabs.indexOf(currentTab);
+            const progress = ((currentIndex + 1) / tabs.length) * 100;
+            
+            document.getElementById('overallProgress').style.width = progress + '%';
+            
+            const messages = {
+                'overview': 'Welcome! Let\'s begin your journey of self-discovery.',
+                'frameworks': 'Learning about personality frameworks...',
+                'assessment': 'Discovering your preferences...',
+                'reflection': 'Time for personal reflection...',
+                'resources': 'Exploring additional resources...'
+            };
+            
+            document.getElementById('progressText').textContent = messages[currentTab] || '';
+        }
+
+        // Collapsible Content
+        function initializeCollapsibles() {
+            document.querySelectorAll('.collapsible-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const collapsible = header.parentElement;
+                    collapsible.classList.toggle('active');
+                });
+            });
+        }
+
+        // Assessment Functionality
+        function initializeAssessment() {
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', () => {
+                    const question = option.closest('.question');
+                    const questionNum = question.dataset.question;
+                    
+                    // Remove selection from other options in this question
+                    question.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Select this option
+                    option.classList.add('selected');
+                    
+                    // Store answer
+                    assessmentAnswers[questionNum] = option.dataset.value;
+                    
+                    // Check if all questions are answered
+                    if (Object.keys(assessmentAnswers).length === 6) {
+                        document.getElementById('calculateResults').style.display = 'block';
+                    }
+                });
+            });
+        }
+
+        function calculateAssessmentResults() {
+            const scores = {
+                'psychodynamic': 0,
+                'categorical': 0,
+                'jungian': 0,
+                'ptm': 0
+            };
+
+            // Count responses for each framework
+            Object.values(assessmentAnswers).forEach(answer => {
+                scores[answer]++;
+            });
+
+            // Find the highest scoring framework(s)
+            const maxScore = Math.max(...Object.values(scores));
+            const topFrameworks = Object.keys(scores).filter(key => scores[key] === maxScore);
+
+            displayResults(scores, topFrameworks);
+        }
+
+        function displayResults(scores, topFrameworks) {
+            const resultsContainer = document.getElementById('results');
+            const resultsContent = document.getElementById('resultsContent');
+            
+            let resultsHTML = '<h4>Your Framework Preference Profile:</h4>';
+            
+            // Display scores
+            resultsHTML += '<div style="margin: 1rem 0;">';
+            Object.entries(scores).forEach(([framework, score]) => {
+                const percentage = (score / 6) * 100;
+                const frameworkNames = {
+                    'psychodynamic': 'Psychodynamic',
+                    'categorical': 'Categorical/Dimensional',
+                    'jungian': 'Jungian Cognitive-Archetypal',
+                    'ptm': 'Power Threat Meaning (PTM)'
+                };
+                
+                resultsHTML += `
+                    <div class="framework-match">
+                        <strong>${frameworkNames[framework]}:</strong> ${score}/6 responses (${percentage.toFixed(0)}%)
+                        <div style="background: #e0e0e0; height: 10px; border-radius: 5px; margin: 0.5rem 0;">
+                            <div style="background: var(--primary-sage); height: 100%; width: ${percentage}%; border-radius: 5px;"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            resultsHTML += '</div>';
+
+            // Primary recommendation
+            if (topFrameworks.length === 1) {
+                const primary = topFrameworks[0];
+                const descriptions = {
+                    'psychodynamic': 'You tend to value deep insight, understanding unconscious patterns, and exploring how past experiences shape current behavior. You might benefit from therapies that focus on relationship patterns and emotional exploration.',
+                    'categorical': 'You prefer evidence-based, measurable approaches to understanding personality. You might benefit from structured interventions that focus on specific skills and track concrete progress.',
+                    'jungian': 'You appreciate psychological complexity and are interested in personal development through understanding cognitive preferences and archetypal patterns. You might benefit from approaches that integrate different aspects of personality.',
+                    'ptm': 'You value understanding experiences within their social and cultural context. You might benefit from trauma-informed approaches that recognize how power dynamics and life circumstances shape psychological responses.'
+                };
+                
+                resultsHTML += `<h4>Primary Framework Match: ${topFrameworks[0].charAt(0).toUpperCase() + topFrameworks[0].slice(1)}</h4>`;
+                resultsHTML += `<p>${descriptions[primary]}</p>`;
+            } else {
+                resultsHTML += '<h4>You show equal affinity for multiple frameworks!</h4>';
+                resultsHTML += '<p>This suggests you appreciate different perspectives on personality and psychological experience. You might benefit from an integrative approach that combines insights from multiple frameworks.</p>';
+            }
+
+            resultsContent.innerHTML = resultsHTML;
+            resultsContainer.style.display = 'block';
+            
+            // Scroll to results
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Reflection Functions
+        function saveReflections() {
+            const reflections = {
+                framework: document.getElementById('frameworkReflection').value,
+                patterns: document.getElementById('patternsReflection').value,
+                growth: document.getElementById('growthReflection').value,
+                action: document.getElementById('actionReflection').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Store in memory (in a real app, this would go to a server or local storage)
+            reflectionData = reflections;
+            
+            alert('Your reflections have been saved! You can export them as a text file using the Export button.');
+        }
+
+        function exportReflections() {
+            const reflections = {
+                framework: document.getElementById('frameworkReflection').value,
+                patterns: document.getElementById('patternsReflection').value,
+                growth: document.getElementById('growthReflection').value,
+                action: document.getElementById('actionReflection').value
+            };
+
+            let exportText = 'Personal Reflection Journal - Personality Frameworks\n';
+            exportText += '='.repeat(50) + '\n\n';
+            exportText += `Date: ${new Date().toLocaleDateString()}\n\n`;
+            
+            exportText += 'Framework Insights:\n';
+            exportText += reflections.framework || 'No response recorded\n';
+            exportText += '\n' + '-'.repeat(30) + '\n\n';
+            
+            exportText += 'Pattern Recognition:\n';
+            exportText += reflections.patterns || 'No response recorded\n';
+            exportText += '\n' + '-'.repeat(30) + '\n\n';
+            
+            exportText += 'Growth Opportunities:\n';
+            exportText += reflections.growth || 'No response recorded\n';
+            exportText += '\n' + '-'.repeat(30) + '\n\n';
+            
+            exportText += 'Action Steps:\n';
+            exportText += reflections.action || 'No response recorded\n';
+
+            // Create and download file
+            const blob = new Blob([exportText], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'personality_reflection_journal.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Utility Functions
+        function resetTool() {
+            if (confirm('Are you sure you want to start over? This will clear all your responses and reflections.')) {
+                assessmentAnswers = {};
+                reflectionData = {};
+                
+                // Reset assessment selections
+                document.querySelectorAll('.option.selected').forEach(option => {
+                    option.classList.remove('selected');
+                });
+                
+                // Clear reflection textareas
+                document.querySelectorAll('.reflection-textarea').forEach(textarea => {
+                    textarea.value = '';
+                });
+                
+                // Hide results
+                document.getElementById('results').style.display = 'none';
+                
+                // Return to overview
+                switchTab('overview');
+                
+                alert('Tool has been reset. You can begin again!');
+            }
+        }
+
+        function downloadSummary() {
+            let summary = 'Personality Psychology Frameworks - Learning Summary\n';
+            summary += '='.repeat(50) + '\n\n';
+            summary += `Generated: ${new Date().toLocaleDateString()}\n\n`;
+            
+            summary += 'FRAMEWORKS EXPLORED:\n';
+            summary += '• Psychodynamic Theory (McWilliams, Kernberg, Shedler)\n';
+            summary += '• Categorical/Dimensional Models (DSM/ICD)\n';
+            summary += '• Jungian Cognitive-Archetypal Framework (Beebe)\n';
+            summary += '• Power Threat Meaning Framework (British Psychological Society)\n\n';
+            
+            if (Object.keys(assessmentAnswers).length > 0) {
+                summary += 'ASSESSMENT RESULTS:\n';
+                const scores = { psychodynamic: 0, categorical: 0, jungian: 0, ptm: 0 };
+                Object.values(assessmentAnswers).forEach(answer => scores[answer]++);
+                
+                Object.entries(scores).forEach(([framework, score]) => {
+                    summary += `• ${framework.charAt(0).toUpperCase() + framework.slice(1)}: ${score}/6\n`;
+                });
+                summary += '\n';
+            }
+            
+            summary += 'KEY TAKEAWAYS:\n';
+            summary += '• Each framework offers unique insights into personality\n';
+            summary += '• Integration of perspectives provides comprehensive understanding\n';
+            summary += '• Personal growth involves ongoing self-reflection and development\n';
+            summary += '• Professional support can enhance the application of these insights\n\n';
+            
+            summary += 'NEXT STEPS:\n';
+            summary += '• Continue exploring the framework that resonated most\n';
+            summary += '• Consider working with a qualified mental health professional\n';
+            summary += '• Apply insights to daily life and relationships\n';
+            summary += '• Revisit this tool periodically to track growth\n';
+
+            const blob = new Blob([summary], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'personality_frameworks_summary.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Initialize Application
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeTabs();
+            initializeCollapsibles();
+            initializeAssessment();
+            updateProgress('overview');
+            
+            // Initialize framework card interactions
+            document.querySelectorAll('.framework-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    document.querySelectorAll('.framework-card').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                });
+            });
+        });
+
+        // Accessibility enhancements
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Close any open modals or return focus
+                document.activeElement.blur();
+            }
+        });
+
+        // Auto-save functionality for reflections
+        document.querySelectorAll('.reflection-textarea').forEach(textarea => {
+            textarea.addEventListener('input', () => {
+                // In a real application, this would auto-save to prevent data loss
+                // For now, we'll just store in memory
+                reflectionData[textarea.id] = textarea.value;
+            });
+        });
+    </script>
+</body>
+</html>
